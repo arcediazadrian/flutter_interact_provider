@@ -9,7 +9,7 @@ class Posts extends StatelessWidget {
     final postsData = Provider.of<PostProvider.Posts>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Provider'),
+        title: Text('Posts'),
       ),
       body: ListView(
         children: postsData.posts
@@ -18,10 +18,10 @@ class Posts extends StatelessWidget {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.all(15), child: Text('Title'),),
+                    Padding(padding: EdgeInsets.all(15), child: Text('Title', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),),
                     Container(width: double.infinity, height: 200, padding: EdgeInsets.symmetric(vertical: 0, horizontal: 10), child: Image.asset('assets/images/cat.jpg', width: double.infinity, fit: BoxFit.cover,),),
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: <Widget>[
                         IconButton(
                           icon: Icon(Icons.favorite),
