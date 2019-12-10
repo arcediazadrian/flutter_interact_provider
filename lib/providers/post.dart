@@ -2,13 +2,16 @@ import 'package:flutter/foundation.dart';
 
 class Post with ChangeNotifier {
   final String id;
+  final String usuario;
   final String titulo;
   final String imagen;
-  bool liked;
+  final bool subidaPorUsuario;
+  bool meGusta;
 
-  Post({this.id, this.titulo, this.imagen});
+  Post({@required this.id, @required this.usuario, @required this.titulo, @required this.imagen, this.meGusta = false, this.subidaPorUsuario = false});
 
-  void toggleLike() {
-    liked = !liked;
+  void toggleMeGusta() {
+    meGusta = !meGusta;
+    notifyListeners();
   }
 }
