@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_interact_provider/pantallas/pantalla_crear_post.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/posts.dart' as PostProvider;
+import '../pantallas/pantalla_crear_post.dart';
+import '../providers/posts.dart';
 import '../widget/post_item.dart';
 
 class PantallaPosts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final postsData = Provider.of<PostProvider.Posts>(context);
+    final postsData = Provider.of<Posts>(context);
     return Scaffold(
       appBar: AppBar(
         title: Text('Posts'),

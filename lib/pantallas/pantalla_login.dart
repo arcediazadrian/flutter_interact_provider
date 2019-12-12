@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_interact_provider/providers/auth.dart';
 import 'package:provider/provider.dart';
+
+import '../providers/auth.dart';
 
 class PantallaLogin extends StatefulWidget {
   @override

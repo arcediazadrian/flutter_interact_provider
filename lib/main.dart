@@ -3,8 +3,8 @@ import 'package:provider/provider.dart';
 
 import './pantallas/pantalla_login.dart';
 import './pantallas/pantalla_posts.dart';
-import './providers/posts.dart' as PostsProvider;
-import './providers/auth.dart' as AuthProvider;
+import './providers/posts.dart';
+import './providers/auth.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,28 +14,29 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(
-          create: (ctx) => AuthProvider.Auth(),
+          create: (ctx) => Auth(),
+          //child: MaterialApp(),
         ),
-        // ChangeNotifierProvider.value(
-        //   value: PostsProvider.Posts(),
-        // ),
-        ChangeNotifierProxyProvider<AuthProvider.Auth, PostsProvider.Posts>(
-            create: (ctx) => PostsProvider.Posts(),
-            update: (ctx, authProvider, anteriorPosts) {
-              if (authProvider.estaAutenticado) {
-                anteriorPosts.setUsuario = authProvider.usuarioActual.avatar;
-              }
-              return anteriorPosts;
-            }),
+        ChangeNotifierProxyProvider<Auth, Posts>(
+          create: (ctx) => Posts(),
+          update: (ctx, authProvider, anteriorPosts) {
+            if (authProvider.estaAutenticado) {
+              anteriorPosts.setUsuario = authProvider.usuarioActual.avatar;
+            }
+            return anteriorPosts;
+          },
+        ),
       ],
-      child: Consumer<AuthProvider.Auth>(
+      // child: MaterialApp(),
+      child: Consumer<Auth>(
         builder: (ctx, auth, child) => MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Utilizando Provider!',
-            theme: ThemeData(
-              primarySwatch: Colors.blue,
-            ),
-            home: auth.estaAutenticado ? PantallaPosts() : PantallaLogin()),
+          debugShowCheckedModeBanner: false,
+          title: 'Utilizando Provider!',
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          home: auth.estaAutenticado ? PantallaPosts() : PantallaLogin(),
+        ),
       ),
     );
   }
