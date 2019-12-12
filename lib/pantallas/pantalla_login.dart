@@ -39,6 +39,7 @@ class _PantallaLoginState extends State<PantallaLogin> {
                   TextField(
                     controller: _emailController,
                     decoration: InputDecoration(labelText: 'Email'),
+                    keyboardType: TextInputType.emailAddress,
                   ),
                   SizedBox(
                     height: 5,
@@ -46,6 +47,7 @@ class _PantallaLoginState extends State<PantallaLogin> {
                   TextField(
                     controller: _passwordController,
                     decoration: InputDecoration(labelText: 'Password'),
+                    obscureText: true,
                   ),
                   SizedBox(
                     height: 10,
